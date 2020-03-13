@@ -29,8 +29,8 @@ def simpleTest():
 class SingleLoopTopo(Topo):
     def __init__(self, **opts):
         Topo.__init__(self, **opts)
-        n_s = int(input("Cuantos swiches utilizara?"))
-        n_h = int(input("Cuantos hosts utilizara?"))
+        n_s = int(input("Cuantos swiches utilizara?\n"))
+        n_h = int(input("Cuantos hosts utilizara?\n"))
         switches = []
         hosts = []
         for s in range(n_s):
@@ -41,7 +41,7 @@ class SingleLoopTopo(Topo):
 
         opc = 0
         while opc != 3:
-            opc = int(raw_input("Seleccione una opcion:\n 1. Conectar Host con Switch\n 2. Conectar Switch con Switch\n 3. Ejecutar SDN"))
+            opc = int(raw_input("Seleccione una opcion:\n 1. Conectar Host con Switch\n 2. Conectar Switch con Switch\n 3. Ejecutar SDN\n"))
             if opc == 1:                
                 pos_h = int(input("Seleccione el host: "))                
                 pos_s = int(input("Seleccione el switch: "))
