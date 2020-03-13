@@ -50,7 +50,7 @@ class SingleLoopTopo(Topo):
                 pos_s1 = int(input("Seleccione el switch 1: "))                
                 pos_s2 = int(input("Seleccione el switch 2: "))
 
-                self.addLink(hosts[pos_s1], switches[pos_s2])
+                self.addLink(switches[pos_s1], switches[pos_s2])
 
 if __name__ == '__main__':
     setLogLevel('info')
