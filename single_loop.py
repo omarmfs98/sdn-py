@@ -10,22 +10,6 @@ from mininet.node import RemoteController
 
 REMOTE_CONTROLLER_IP = "172.17.12.180"
 
-def simpleTest():
-    topo = SingleLoopTopo()
-    net = Mininet(topo=topo,
-            controller=None,
-            autoStaticArp=True)
-    net.addController("c0",
-            controller=RemoteController,
-            ip=REMOTE_CONTROLLER_IP,
-            port=6633)
-    net.start()
-    print "Dumping host connections"
-    dumpNodeConnections(net.hosts)
-    print "Testing network connectiviy"
-    net.pingAll()
-    net.stop()
-
 class SingleLoopTopo(Topo):
     def __init__(self, **opts):
         Topo.__init__(self, **opts)
@@ -54,7 +38,6 @@ class SingleLoopTopo(Topo):
 
 if __name__ == '__main__':
     setLogLevel('info')
-    simpleTest()
     topo = SingleLoopTopo()
     net = Mininet(topo=topo,
             controller=None,
