@@ -8,7 +8,7 @@ from mininet.util import dumpNodeConnections
 from mininet.log import setLogLevel
 from mininet.node import RemoteController
 
-REMOTE_CONTROLLER_IP = "192.168.1.70"
+REMOTE_CONTROLLER_IP = "192.168.137.79"
 
 def simpleTest():
     topo = SingleLoopTopo()
