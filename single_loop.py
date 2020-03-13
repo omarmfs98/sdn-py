@@ -29,22 +29,39 @@ def simpleTest():
 class SingleLoopTopo(Topo):
     def __init__(self, **opts):
         Topo.__init__(self, **opts)
+        n_s = int(input("Cuantos swiches utilizara?"))
+        n_h = int(input("Cuantos hosts utilizara?"))
         switches = []
         hosts = []
-        for s in range(3):
+        for s in range(n_s):
             switches.append(self.addSwitch('s%s' % (s + 1), protocols="OpenFlow13"))
 
-        for h in range(4):
+        for h in range(n_h):
             hosts.append(self.addHost('h%s' % (h + 1)))
-        
-        self.addLink(hosts[0], switches[1])
-        self.addLink(hosts[1], switches[1])
-        self.addLink(hosts[2], switches[2])
-        self.addLink(hosts[3], switches[2])
 
-        self.addLink(switches[0], switches[1])
-        self.addLink(switches[0], switches[2])
-        self.addLink(switches[1], switches[2])
+        opc = 0
+        while opc != 3:
+            opc = int(raw_input("Seleccione una opción:\n 1. Conectar Host con Switch\n 2. Conectar Switch con Switch\n 3. Ejecutar SDN"))
+            if opc == 1:
+                for h in range(n_h):
+                    print((h + 1) + ", ")
+                pos_h = int(input("Seleccione el host: "))
+
+                for s in range(n_s):
+                    print((s + 1) + ", ")
+                pos_s = int(input("Seleccione el switch: "))
+
+                self.addLink(hosts[pos_h - 1], switches[pos_s - 1])
+            if opc == 2:
+                for s in range(n_s):
+                    print((s + 1) + ", ")
+                pos_s1 = int(input("Seleccione el switch 1: "))
+
+                for s in range(n_s):
+                    print((s + 1) + ", ")
+                pos_s2 = int(input("Seleccione el switch 2: "))
+
+                self.addLink(hosts[pos_s1 - 1], switches[pos_s2 - 1])
 
 if __name__ == '__main__':
     setLogLevel('info')
