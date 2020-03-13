@@ -28,23 +28,23 @@ def simpleTest():
 
 class SingleLoopTopo(Topo):
     def __init__(self, **opts):
-    Topo.__init__(self, **opts)
-    switches = []
-    hosts = []
-    for s in range(3):
-        switches.append(self.addSwitch('s%s' % (s + 1), protocols="OpenFlow13"))
+        Topo.__init__(self, **opts)
+        switches = []
+        hosts = []
+        for s in range(3):
+            switches.append(self.addSwitch('s%s' % (s + 1), protocols="OpenFlow13"))
 
-    for h in range(4):
-        hosts.append(self.addHost('h%s' % (h + 1)))
-    
-    self.addLink(hosts[0], switches[1])
-    self.addLink(hosts[1], switches[1])
-    self.addLink(hosts[2], switches[2])
-    self.addLink(hosts[3], switches[2])
+        for h in range(4):
+            hosts.append(self.addHost('h%s' % (h + 1)))
+        
+        self.addLink(hosts[0], switches[1])
+        self.addLink(hosts[1], switches[1])
+        self.addLink(hosts[2], switches[2])
+        self.addLink(hosts[3], switches[2])
 
-    self.addLink(switches[0], switches[1])
-    self.addLink(switches[0], switches[2])
-    self.addLink(switches[1], switches[2])
+        self.addLink(switches[0], switches[1])
+        self.addLink(switches[0], switches[2])
+        self.addLink(switches[1], switches[2])
 
 if __name__ == '__main__':
     setLogLevel('info')
