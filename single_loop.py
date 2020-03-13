@@ -41,7 +41,7 @@ class SingleLoopTopo(Topo):
 
         opc = 0
         while opc != 3:
-            opc = int(raw_input("Seleccione una opción:\n 1. Conectar Host con Switch\n 2. Conectar Switch con Switch\n 3. Ejecutar SDN"))
+            opc = int(raw_input("Seleccione una opcion:\n 1. Conectar Host con Switch\n 2. Conectar Switch con Switch\n 3. Ejecutar SDN"))
             if opc == 1:
                 for h in range(n_h):
                     print((h + 1) + ", ")
